@@ -41,21 +41,21 @@ Things you may want to cover:
 ### Association
 
 - has_many :items
-- has_many :buy
+- has_many :buys
 
 ## items テーブル
 
 | Column         | Type       | Options     |
 | -------------- | ---------- | ----------- |
-| user           | references | null: false |
-| name           | string     | null: false |
-| introduction   | text       | null: false |
-| category       | integer    | null: false |
-| item_condition | integer    | null: false |
-| postage_payer  | integer    | null: false |
-| area           | integer    | null: false |
-| day            | integer    | null: false |
-| price          | integer    | null: false |
+| user_id        | integer | null: false, foreign_key: true |
+| name           | string  | null: false                    |
+| introduction   | text    | null: false                    |
+| category       | integer | null: false                    |
+| item_condition | integer | null: false                    |
+| postage_payer  | integer | null: false                    |
+| area           | integer | null: false                    |
+| day            | integer | null: false                    |
+| price          | integer | null: false                    |
 
 ### Association
 

@@ -27,56 +27,66 @@ Things you may want to cover:
 
 ## users テーブル
 
-| Column   | Type   | Options     |
-| -------- | ------ | ----------- |
-| nickname | string | null: false |
-| email    | string | null: false |
-| password | string | null: false |
+| Column          | Type   | Options     |
+| --------------- | ------ | ----------- |
+| nickname        | string | null: false |
+| email           | string | null: false |
+| password        | string | null: false |
+| last_name       | string | null: false |
+| first_name      | string | null: false |
+| last_name_kana  | string | null: false |
+| first_name_kana | string | null: false |
+| birth_date      | string | null: false |
 
 ### Association
 
 - has_many :items
-- has_one :buy
+- has_many :buy
 
 ## items テーブル
 
-| Column         | Type       | Options                        |
-| -------------- | ---------- | ------------------------------ |
-| name           | string     | null: false                    |
-| introduction   | text       | null: false                    |
-| category       | references | null: false, foreign_key: true |
-| item_condition | references | null: false, foreign_key: true |
-| postage_payer  | references | null: false, foreign_key: true |
-| area           | string     | null: false                    |
-| day            | references | null: false, foreign_key: true |
-| price          | integer    | null: false                    |
+| Column         | Type       | Options     |
+| -------------- | ---------- | ----------- |
+| user           | references | null: false |
+| name           | string     | null: false |
+| introduction   | text       | null: false |
+| category       | integer    | null: false |
+| item_condition | integer    | null: false |
+| postage_payer  | integer    | null: false |
+| area           | integer    | null: false |
+| day            | integer    | null: false |
+| price          | integer    | null: false |
 
 ### Association
 
-- has_many :users
+- belongs_to :user
+- belongs_to :buy
 
-## buy テーブル
+## buys テーブル
 
-| Column  | Type   | Options     |
-| ------- | ------ | ----------- |
-| user_id | string | null: false |
-| item    | string | null: false |
+| Column  | Type    | Options                        |
+| ------- | ------- | ------------------------------ |
+| user_id | integer | null: false, foreign_key: true |
+| item    | integer | null: false, foreign_key: true |
 
 ### Association
 
-- has_one :user
-- has_one :item
+- belongs_to :user
+- belongs_to :item
+- has_one :delivery_address
 
 ## delivery_address テーブル
 
-| Column       | Type    | Options     |
-| ------------ | ------- | ----------- |
-| postal_code  | integer | null: false |
-| prefecture   | string  | null: false |
-| city         | string  | null: false |
-| address      | string  | null: false |
-| phone_number | integer | null: false |
+| Column        | Type    | Options     |
+| ------------  | ------- | ----------- |
+| postal_code   | string  | null: false |
+| prefecture    | integer | null: false |
+| city          | string  | null: false |
+| address       | string  | null: false |
+| phone_number  | string  | null: false |
+| building_name | string  | null: false |
+| buy           | string  | null: false |
 
 ### Association
 
-- has_one :buy
+- belongs_to :buy

@@ -36,7 +36,7 @@ Things you may want to cover:
 | first_name      | string | null: false |
 | last_name_kana  | string | null: false |
 | first_name_kana | string | null: false |
-| birth_date      | string | null: false |
+| birth_date      | date   | null: false |
 
 ### Association
 
@@ -60,14 +60,14 @@ Things you may want to cover:
 ### Association
 
 - belongs_to :user
-- belongs_to :buy
+- has_one :buy
 
 ## buys テーブル
 
 | Column  | Type    | Options                        |
 | ------- | ------- | ------------------------------ |
 | user_id | integer | null: false, foreign_key: true |
-| item    | integer | null: false, foreign_key: true |
+| item_id | integer | null: false, foreign_key: true |
 
 ### Association
 
@@ -77,15 +77,15 @@ Things you may want to cover:
 
 ## delivery_address テーブル
 
-| Column        | Type    | Options     |
-| ------------  | ------- | ----------- |
-| postal_code   | string  | null: false |
-| prefecture    | integer | null: false |
-| city          | string  | null: false |
-| address       | string  | null: false |
-| phone_number  | string  | null: false |
-| building_name | string  | null: false |
-| buy           | string  | null: false |
+| Column        | Type    | Options                        |
+| ------------  | ------- | ------------------------------ |
+| postal_code   | string  | null: false                    |
+| prefecture    | integer | null: false                    |
+| city          | string  | null: false                    |
+| address       | string  | null: false                    |
+| phone_number  | string  | null: false                    |
+| building_name | string  |                                |
+| buy_id        | integer | null: false, foreign_key: true |
 
 ### Association
 
